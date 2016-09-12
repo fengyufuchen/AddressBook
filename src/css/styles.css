@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/* css星号选择器，也称为通用选择器，通配符用于对页面所有元素html标签中所有 的标签应用样式*/
+*{
+    font-family: Arial;
+    font-size:10pt;
+    font-weight:bold;
+
+
+}
+
+body{
+    margin:0px;
+
+}
+/* 定义class选择器*/
+
+.cssSpacer{
+    height: 64px;
+}
+.cssContactListNormal{
+    background-color: #ffffff;
+
+}
+.cssContactListAlternate{
+    background-color: #a3a3a3;
+
+}
+
+/* cursor 用于设置光标的形状，该属性定义了鼠标制作呢放在一个元素范围内时所用的光标形状*/
+.cssContactListOver{
+
+    background-color: #fafafa;
+    cursor: pointer;
+}
+.cssMain{
+    widith:100%;
+    height:580px;
+    z-index:0;
+
+}
+.cssInitializing{
+    widht:920px;
+    height:2000px;
+    z-index: 1000;
+
+}
+.cssTba{
+    position: relative;
+    left:2px;
+    _left: 4px;
+}
+.cssContactList{
+    padding:4px;
+    height: 480px;;
+    border:2px solid #000000;
+    overflow: scroll;
+}
+
+
+
