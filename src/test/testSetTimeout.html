@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+  /*      var i=0;
+        setTimeout("i+=1;alert(i)",1000);
+
+        var j=0;
+        setTimeout(function(){j+=1;alert(j)},3000);
+*/
+/*
+        var m=0;
+        function test(){
+            m=m+1;
+            alert(m);
+        }
+
+        setTimeout("test()",1000);*/
+
+    function Man(){
+        this.name="zhangjingrui";
+        this.sex="sex";
+        this.age=28;
+        this.sayAge=function(){
+            alert(this.age);
+        };
+        say:function () {
+
+        }
+    }
+   Man.prototype.count=function(){
+       this.age+=1;
+       alert(this.age);
+       if(this.age>10) return;
+       setTimeout(count,1000);
+   };
+        aman=new Man();
+        aman.count();
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
