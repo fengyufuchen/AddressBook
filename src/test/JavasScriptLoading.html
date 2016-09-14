@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function loadjs(script_filename){
+            document.write("<"+"script language='javascript' type='text/javascript'");
+            document.write("src='"+script_filename+"'>");
+            document.write("<"+"/script"+">");
+
+            var scirpttext="<"+"scirpt language='javascript' type='text/javascript'"+"src='"+script_filename+"'>"+"<"+"/script"+">"
+alert(scirpttext);
+            alert("loadjs exit...");
+
+        }
+        var scirptfilename="http://coolshell.cn/asyncjs/alert.js";
+        loadjs(scirptfilename);
+        alert("loadjs finished");
+    </script>
+    <script type="text/javascript" language="JavaScript">
+        alert("last scirpt block");
+
+    </script>
+
+
+    <script type="text/javascript">
+
+        function loadjs(script_filename){
+            var script=document.createElment("script");
+            script.setAttribute("type","text/javascript");
+            script.setAttribute("src",script_filename);
+            script.setAttribute("id","coolshell_script_id");
+            script_id=document.getElementById("coolshell_script_id");
+            if(script_id){
+                document.getElementsByTagName("head")[0].removeChild(script_id);
+            }
+            document.getElementsByTagName("head")[0].appendChild(script);
+        }
+        var script="http://coolshell.cn/asyncjs/alert.js";
+        loadjs(script)
+    </script>
+
+
+</head>
+<body>
+<script type="text/javascript" language="JavaScript">
+    alert("load body")
+</script>
+</body>
+</html>

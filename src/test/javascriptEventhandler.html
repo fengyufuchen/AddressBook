@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript事件处理程序有三种情况</title>
+    <script type="text/javascript">
+        function showMessage(value){
+            alert("Html事件处理程序！");
+            alert("event:"+event);//mouseevent
+            alert(value);//click me
+            alert(this);//object window
+        }
+
+
+
+    </script>
+</head>
+<body>
+<input type="button" value="click me" id="btn1" onclick="showMessage(this.value);">
+<input type="button"  value="dom0"  id="dom0btn">
+
+
+</body>
+<script type="text/javascript">
+    document.getElementById("dom0btn").onclick=function () {
+
+        alert("this"+this);//this [objedct HTMLInputElement]
+
+        //使用dom0级方法指定的事件处理程序被任务是元素的方法。因此这个时候的事件处理程序是在元素的作用域中运行的；换句话说this引用的是当前元素
+        alert(this.id);
+
+    };
+
+</script>
+</html>

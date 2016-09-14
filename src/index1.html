@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <!-- 用于当前文档引用外部文档，rel属性用于设置对象和链接目的之间的关系。rel是relationship的英文缩写，stylesheet中style是样式的缩写
+    sheet是表格之意，样式表。rel="stylesheeet"描述了当前页面与href指定的文档之间的关系，也就是说明href链接的是一个样式表-->
+    <link rel="stylesheet" href="./css/dojoStyles.css" type="text/css">
+    <link rel="stylesheet"href="./css/styles.css"type="text/css">
+
+    <script type="text/javascript" >
+        var doConfig={
+            //设置Dojo想属性，在哪里可以找到所有的Dojo资源，是否打印错误信息
+           baseScriptUri:"js/dojo/",
+            isDebug:true
+        };
+    </script>
+    <script type="text/javascript" src="./js/dojo/dojo.js"></script>
+    <script type="text/javascript" >
+        //dojo.require("my.module")用于加载JavaScript文件，功能类似于script标签的作用
+        /*
+        这种模块系统的特性：
+        1 缓存管理
+        2命名空间管理
+        3路径管理
+        4依赖管理
+
+         */
+
+        dojo.require("dojo.widget.FisheyeList");
+        dojo.require("dojo.storage");
+
+    </script>
+
+    <script type="text/javascript" src="./js/Contact.js">
+
+    </script>
+    <script type="text/javascript" src="./js/EventHandler.js"></script>
+    <script type="text/javascript" src="./js/DataManager.js"></script>
+    <script type="text/javascript" src="./js/ContactManager.js"></script>
+
+    <script>
+        function $(inID){
+            return document.getElementById(inID);
+        }
+
+        var contactManager=new ContactManager();
+
+        dojo.event.connect(window,"onload",contactManager.init);
+
+
+
+    </script>
+
+
+
+    <title>Title</title>
+</head>
+<body>
+<div id ="divInitializing" class="cssInitializing">
+    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>      <br>    <br>    <br>
+    <center >...Initializing Contact Manager ,please wait....</center>
+
+</div>
+
+<div  class="outerbar">
+    <div class="dojo-FisheyeList"
+     dojo:itemWidth="64"
+     dojo:itemHeight="64"
+      dojo:itemMaxWidth="128"
+      dojo:itemMaxHeight="128"
+      dojo:orientation="horizontal"
+      dojo:effectUnits="1"
+      dojo:itemPadding="10"
+      dojo:attachEdge="top"
+       dojo:labelEdge="bottom"
+       dojo:enableCrappySvgSupport="false">
+
+
+     <!-- name属性和caption属性的区别：name表示这个控件的名称，这个属性，每一个控件都有，比如text，command等等；；caption算是标签，只有需要在上
+     面显示文字的控件才有，比如按钮。HTML标签中有一个<caption>标签，caption标签必须紧跟随table标签之后，定义表格的标题，通常这个标题会被居中于表格之上。
+
+     -->
+    <div class="dojo-FisheyeListItem" onclick="contactManager.doNewContact();" dojo:iconsrc="img/icon_new.gif" caption="new Contact"></div>
+    <div class="dojo-FisheyeListItem" dojo:iconsrc="./img/transPix.gif" caption=""></div>
+
+
+
+
+
+    </div>
+
+</div>
+</body>
+</html>

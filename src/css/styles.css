@@ -49,12 +49,33 @@ body{
     left:2px;
     _left: 4px;
 }
+/*
+overflow :内容溢出时如何处理-
+*/
 .cssContactList{
     padding:4px;
     height: 480px;;
     border:2px solid #000000;
     overflow: scroll;
 }
+
+.cssMainOuter{
+    padding: 4px;;
+    height: 480px;
+    border:2px solid #f8f8f8;
+    overflow: scroll;
+}
+.cssDataBox{
+    width:100%;
+    border:1px solid #000000;
+}
+.cssDataBoxHeader{
+    background-color: #e0e0f0;
+}
+.cssTextbox{
+    border:1px solid #ffffff;
+}
+
 
 
 

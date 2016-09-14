@@ -1,0 +1,19 @@
+/*
+margin 后面如果有两个参数的话，第一个表示top和bottom，第二个表示left和right。因为0 auto，表示上下边界为0，左右边界根据宽度适应相同值（即居中）
+*/
+.dojoHtmFisheyeListBar{
+    margin:0 auto;
+    text-align:center;
+}
+/*
+动画效果
+*/
+.outerbar{
+    text-align:center;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%
+
+}
+

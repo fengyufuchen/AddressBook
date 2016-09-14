@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <!-- 用于当前文档引用外部文档，rel属性用于设置对象和链接目的之间的关系。rel是relationship的英文缩写，stylesheet中style是样式的缩写
+    sheet是表格之意，样式表。rel="stylesheeet"描述了当前页面与href指定的文档之间的关系，也就是说明href链接的是一个样式表-->
+    <link rel="stylesheet" href="./css/dojoStyles.css" type="text/css">
+    <link rel="stylesheet"href="./css/styles.css"type="text/css">
+    <script type="text/javascript">
+        var djConfig={
+            baseScriptUri:"js/dojo/",
+            isDebug:true
+        };
+
+        var  EventUtil={
+            addHandler: function(element,type,handler){
+                if(document.addEventListener){
+                    element.addEventListener(type,handler,false);
+
+                }
+                else if(document.attachEvent){
+                    element.attachEvent(element,handler);
+                }else {
+                    element["on"+type]=handler;
+
+                }
+            },//addhandler
+
+            removeHandler:function(element,type,handler){
+                if(element.removeEventListener){
+                    element.removeEventListener(type,handler,false);
+                }
+                else if(element.detachEvent){
+                    element.detachEvent("on"+type,handler);
+
+                }
+                else{
+
+                    element["on"+type]=null;
+                }
+            }
+        };
+
+
+    </script>
+    <!--引入样式表-->
+
+    <script type="text/javascript" >
+        function loadjs(filename){
+            alert(filename);
+            if(!filename.isArray){
+                var tempScirpt=   document.createElement("script");
+                tempScirpt.type="text/javascript";
+                tempScirpt.src=filename;
+                document.getElementsByTagName("head")[0].appendChild(tempScirpt);
+            }else{
+                for(var nm in filename){
+                    var tempScirpt=    document.createElement("script");
+                    tempScirpt.type="text/javascirpt";
+                    tempScirpt.src=nm;
+
+                    document.getElementsByTagName("head")[0].appendChild(tempScirpt);
+                }
+            }
+        }
+
+        /*   测试是否可以正确添加script脚本
+         EventUtil.addHandler(window,"load",loadjs("./js/testloadjs.js"));
+         */
+        EventUtil.addHandler(window,"load","./js/dojo/dojo.js");
+    </script>
+    <script  type="text/javascript" language="javascript">
+        dojo.require("dojo.widget.FisheyeList");
+        dojo.require("dojo.storage.*");
+    </script>
+    <script type="text/javascript" >
+        EventUtil.addHandler(window,"load","./js/Contact.js");
+        EventUtil.addHandler(window,"load","./js/EventHandlers.js");
+        EventUtil.addHandler(window,"load","./js/DataManager.js");
+        EventUtil.addHandler(window,"load","./js/ContactManager.js");
+    </script>
+
+
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
