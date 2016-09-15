@@ -61,6 +61,8 @@ function Contack(){
 
     this.populateContact=function(){
         for(var i=0;i<this.fieldArray.length;i++){
+            //首先是获取页面中的指定id的标签的value，然后将获取到的值存储到当前对象的指定名称的属性中，这样就像是一个字典结构。
+            //其中上面的list作为字典的key，对象的属性作为指定key的value值
             var fieldValue=$(this.fieldArray[i]).value;
             this[this.fieldArray[i]]=fieldValue;
         }
