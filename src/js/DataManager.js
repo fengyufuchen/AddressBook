@@ -19,7 +19,9 @@ function DataManager(){
         if(storedContacts){
                  var splitContacts=storedContacts.split("~>!<~");
                  for (var i=0; i<splitContacts.length;i++){
+                     //首先是创建一个新的联系人对象，该对象用来保存封装从storage中读取到的数据
                      var contact=new Contact();
+                     //将从数据库中读取的书库放到contact中，其中读取到的是一个json字符串
                      contact.restoreFromJSON(splitContacts[i]);
                      contact.arrayIndex=i;
                      this.contacts.push(contact);
@@ -49,7 +51,11 @@ function DataManager(){
             }
             contactsString+=this.contacts[i];//调用了toString方法
         }
-        dojo.storage.put("js_contact_manager_contacts",contactsString,this.saveHandler);
+        try{
+            dojo.storage.put("js_contact_manager_contacts",contactsString,this.saveHandler);
+        }catch (e){
+            alert(e);
+        }
     }
 
     //这个方法是一个回调函数，该函数的引用被传递给dojo.storage当持久化过程结束的时候将会回调该函数用于通知当前持久化过程的状态（成功，等待还是失败）
@@ -68,6 +74,15 @@ this.getContact=function(inIndex){
 
 }
 this.deleteContact=function(inIndex){
+//从contact中删除从inIndex位置开始，1个元素，然后返回所删除的item的一个数组
+    this.contacts.splice(inIndex,1);
+    //对删除指定联系人之后的contact做持久化操作
+    this.persistContacts();
+    //重新设置每一个联系人的index顺序
+    for(var i=0;i<this.contacts.length;i++){
+        this.contacts[i].arrayIndex=i;
+    }
+
 
 
 }
@@ -91,6 +106,11 @@ this.listContacts=function(inCurrentTab){
     }
 
 
+}
+
+this.clearContacts=function(){
+    dojo.storage.clear();
+    this.contacts=new Array;
 }
 
 

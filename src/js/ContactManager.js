@@ -13,6 +13,7 @@ function ContactManager(){
     this.init=function(){
         contactManager.eventHandlers=new EventHandlers();
         contactManager.eventHandlers.init();
+
         contactManager.dataManager=new DataManager();
         //500毫秒之后执行该方法,
         this.initTimer=setTimeout("contactManager.initStorage()",500);
@@ -36,7 +37,7 @@ function ContactManager(){
     }
 //这个方法主要是用于显示联系人列表信息，每次删除，保存，等操作后都需要调用该方法进行重新显示
     this.displayContactList=function(){
-        var contacts=this.dataManager.listContacts(this.currentTab);
+        var contacts=this.dataManager.listContacts(this.currentTab);//currentTab=09|ac|df等等
         var html="";
         //使用div显示每一个联系人信息，并且需要给这个div设置监听事件
         var alt=false;
@@ -76,7 +77,7 @@ function ContactManager(){
         contact.arrayIndex=this.currentContactIndex;
         contact.populateContact();
     }
- //这个方法在联系人item被选中的时候将会被调用。
+     //这个方法在联系人item被选中的时候将会被调用。
     //左侧的联系人列表其实是一个个的div，我们给每一个div（也就是每一个联系人）设置了onClick监听事件，每当选中的时候就会调用这个方法
     //监听的设置是在方法displayContactList中完成的
  this.doEditContact=function(inIndex){
@@ -86,7 +87,42 @@ function ContactManager(){
     contact.populateScreen();
 }
 
+//该方法被设置给div的监听属性，用于监听当点击删除时候的操作
+this.doDeleteContact=function(){
+    if(this.initTimer==null){
+        if(this.currentContactIndex!=-1&&confirm("Are you sure you want to delete this contact ")){
+            this.dataManager.deleteContact(this.currentContactIndex);
+            this.displayContactList();
 
+          //删除选中的联系人之后设置清空表单，并且设置当前选中的联系人的index为-1
+            document.form[0].reset();
+            this.currentContactIndex=-1;
+        }
+    }
+}
+
+this.doClearContacts=function(){
+    if(this.initTimer==null){
+        if(confirm("This will permanently delete all contacts form persistent storage \n Are you sure?")){
+            this.dataManger.clearContacts();
+            this.displayContactList();
+            document.forms[0].reset();
+            this.currentCOntactIndex=-1;
+            alert("ok ,it's done Don't come cryin to me latter");
+        }
+    }
+}
+
+this.doNewContact=function(){
+    if(this.initTimer==null){
+
+        if(confirm("create new contact \n you will lose any unsaved changes,are you sure")){
+            document.forms[0].rest();
+            this.currentContactIndex=-1;
+        }
+
+    }
+}
 
 
 }

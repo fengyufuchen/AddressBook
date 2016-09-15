@@ -73,5 +73,25 @@ function Contack(){
             $(this.fieldArray[i]).value=this[this.fieldArray[i]];
         }
     }
+    this.toString=function(){
+        var json="";
+        for(var i=0; i<this.fieldsArray.length;i++){
+            if(json!="{"){
+                json+=", ";
+            }
+            json+="\""+this.fieldArray[i]+"\":\""+this[this.fieldArray[i]]+"\"";
+        }
+        json+=" }";
+        return json;
+    }
+
+
+    this.restoreFromJSON=function(inJson){
+        eval("json=("+inJson+")");//使用json字符串创建一个json对象
+        for(var i=0; i<this.fieldArray.length;i++){
+            this[this.fieldArray[i]]=json[this.fieldArray[i]];
+        }
+
+    }
 
 }

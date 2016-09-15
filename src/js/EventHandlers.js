@@ -37,6 +37,7 @@ function EventHandlers(){
         this.sytle.backgroundColor="#ffffff";
     };
 
+    //-----------------------Tab- start----------------------------
     //在左边的页标签是使用Img标签处理的，并且我们给每一个标签设置了onMouseOver事件，所以当鼠标滑过的时候会出触发事件回调
     // onMouseOver=contactManager.eventHandlers.stOver(this)
     //上面的this是指谁？onMouseOver属性作为标签img的属性，引用了一个方法setOver，在调用的时候肯定是通过img对象调用它的onMouseOver方法
@@ -54,19 +55,35 @@ function EventHandlers(){
   }
   this.stClick=function(inTab){
 
+        //选中左边的某一个标签之后首先将所有的标签的背景设置为一样
       for (var i=0;i<this.imageIDs.length;i++){
           var sid=this.imageIDs[i];
           $(sid).src=this.selectorImages[sid].src;
       }
-
+     //inTab是被选中的那个标签，所以我们需要设置该标签的背景色不同
       inTab.src=this.selectorImages[inTab.id+"_over"].src;
-
+      //stClick被设置为img的click事件，所以这里的inTab就是img标签，当标签被点击的时候调用该方法
+      //inTab.id=sel_09 ，我们需要选取其中的09作为当前选中的标签的标示currentTab
       contactManager.currentTab=inTab.id.substr(4,2);
       contactManager.displayContactList();//更新选中的标签对应的联系人列表
+  }
+  //------------------tab end--------------
+    //----------------contact lsit start----------
 
+  //设置当左边联系人列表有鼠标滑过的时候的背景色，该方法是在创建联系人列表div的时候被设置给div的onMouseOut属性
+  this.clOut=function(inContact){
+      if(inContact.getAttribute("altRow")=="true"){
+          inContact.cssName="cssContactListAlternate";
+      }else{
+          inContact.className="cssContactListNormal";
+
+      }
 
   }
+  this.clOver=function (){
+      inContact.className="cssContactListOver";
+  }
 
-
+//----------contact list---end-----
 }
 
