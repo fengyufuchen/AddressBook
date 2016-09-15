@@ -33,6 +33,8 @@ function Contack(){
     this.birthday = "";
     this.highSchoolInfo = "";
     this.collegeInfo = "";
+
+
     this.custom1 = "";
     this.custom2 = "";
     this.homeAddressLine1 = "";
@@ -57,6 +59,8 @@ function Contack(){
         "custom2", "homeAddressLine1", "homeAddressLine2", "homeCity", "homeState",
         "homeZipCode", "workAddressLine1", "workAddressLine2", "workCity",
         "workState", "workZipCode"
+
+
     ];
 
     this.populateContact=function(){

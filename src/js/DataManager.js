@@ -21,6 +21,7 @@ function DataManager(){
                  for (var i=0; i<splitContacts.length;i++){
                      //首先是创建一个新的联系人对象，该对象用来保存封装从storage中读取到的数据
                      var contact=new Contact();
+
                      //将从数据库中读取的书库放到contact中，其中读取到的是一个json字符串
                      contact.restoreFromJSON(splitContacts[i]);
                      contact.arrayIndex=i;
