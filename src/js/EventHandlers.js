@@ -28,6 +28,7 @@ function EventHandlers(){
     }
 
     thi.ifFocus=function(){
+
         //注意这里的this是指谁？？？外部的this肯定是表示了EventHandlers实例对象；但是我们把ifFocus引用的方法传递给了上面的init方法中的inputFields中的onfocus
         //所以真正被调用的时候实际上是inputField对象调用了这个方法，所以这里面的this表示inputField
         this.style.backgroundColor="#ffffa0";
