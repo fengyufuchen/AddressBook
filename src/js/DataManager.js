@@ -14,6 +14,7 @@ function DataManager(){
 
     //重新获取已经存储的数据
     this.restoreContacts=function(){
+
         //获取存储的数据
         var stroedContacts=dojo.storage.get("js_contact_manager_contacts");
         if(storedContacts){
